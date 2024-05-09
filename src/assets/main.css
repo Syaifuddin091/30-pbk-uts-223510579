@@ -156,12 +156,12 @@ input:checked ~ .bubble::after {
 
 .todo-list .todo-item {
   display: flex;
-  align-items: center;
   background-color: #17181d;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
   margin-bottom: 1rem;
+
 }
 
 .todo-item label {
@@ -174,9 +174,15 @@ input:checked ~ .bubble::after {
   flex: 1 1 0%;
 }
 
-.todo-item .todo-content input {
+.todo-item .todo-content ul li {
+  display: flex;
   color: white;
   font-size: 1.125rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-decoration: none;
+  text-align: center;
+
 }
 
 .todo-item .actions {
@@ -204,11 +210,14 @@ input:checked ~ .bubble::after {
 
 .todo-item .actions .delete {
   background-color: var(--danger);
+  margin-left: 5px;
 }
 
-.todo-item.done .todo-content input {
+
+.todo-item.done .todo-content p {
   text-decoration: line-through;
   color: rgba(165, 165, 165, 0.752);
+  position:absolute;
 }
 
 .input-section,
@@ -232,7 +241,7 @@ input:checked ~ .bubble::after {
   transition: 0.2s ease-in-out;
 }
 
-.todo-section .todo-list button[type="submit"]:hover {
+.todo-section .todo-list .hide button[type="submit"]:hover {
   opacity: 0,75;
 }
 

@@ -27,16 +27,17 @@
 
         <div class="list">
           <div
-            v-for="todo in filter"
-            :class="`todo-item ${todo.done && 'done'}`"
-          >
+            v-for="todo in filter" :class="`todo-item ${todo.done && 'done'}`">
             <label>
               <input type="checkbox" v-model="todo.done" />
             </label>
 
             <div class="todo-content">
-              <input type="text" v-model="todo.todo" />
+              <ul>
+                <li>{{ todo.todo }}</li>
+              </ul>
             </div>
+
 
             <div class="actions">
               <button class="delete" @click="deleteTodo(todo)">Hapus</button>
@@ -91,4 +92,4 @@ onMounted(() => {
 });
 
 
-</script>
+</script> 
