@@ -51,7 +51,12 @@ h3 {
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
-
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.3rem;
+}
 h4 {
   text-align: center;
   color: white;
@@ -154,6 +159,7 @@ input:checked ~ .bubble::after {
   margin: 1rem 0;
 }
 
+
 .todo-list .todo-item {
   display: flex;
   background-color: #17181d;
@@ -214,10 +220,9 @@ input:checked ~ .bubble::after {
 }
 
 
-.todo-item.done .todo-content p {
+.todo-item.done .todo-content ul li {
   text-decoration: line-through;
   color: rgba(165, 165, 165, 0.752);
-  position:absolute;
 }
 
 .input-section,
@@ -241,7 +246,63 @@ input:checked ~ .bubble::after {
   transition: 0.2s ease-in-out;
 }
 
-.todo-section .todo-list .hide button[type="submit"]:hover {
-  opacity: 0,75;
+.todo-list .hide :hover{
+  opacity: 0.75;
 }
 
+.edit-todo{
+  margin-top: 8px;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 20px;
+
+}
+.edit-todo form {
+  display: flex;
+  align-items: center; 
+  border: 1px solid #022057;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.edit-todo input {
+  flex: 2;
+  padding: 8px;
+  margin-right: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+}
+
+.edit-todo .save-button {
+  background-color: #4CAF50;
+  color: white;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.edit-todo .save-button:hover {
+  background-color: #45a049;
+}
+
+
+.edit-todo .cancel-button {
+  background-color: #f44336;
+  border-radius: 5px;
+  color: white;
+}
+
+.edit-todo .cancel-button:hover {
+  background-color: #d32f2f;
+}
+
+
+.edit-todo button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.edit-todo button:hover {
+  background-color: #45a049;
+}

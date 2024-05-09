@@ -19,17 +19,30 @@
       </section>
     </div>
 
+    <h2 class="centered-text" v-show="todos.length === 0">Tidak ada kegiatan😞</h2>
+
     <div class="todo-section">
       <section class="todo-list">
-        <button class="hide" @click="hideCompleted = !hideCompleted">{{ hideCompleted ? 'Show all' : 'Hide completed' }}</button>
-        <h2 v-show="todos.length === 0">Tidak ada kegiatan😞</h2>
+        <button class="hide" @click="hideCompleted = !hideCompleted">{{ hideCompleted ? 'Show all' : 'Hide completed' }}</button>  
+
+          
+        <div class="edit-todo" v-if="editingTodo">
+          <form @submit.prevent="saveEdit">
+            <input
+            type="text"
+            v-model="editingTodo.todo"
+            />
+            <button class="save-button" type="submit">Simpan</button>
+            <button class="cancel-button" @click="cancelEdit">Batal</button>
+          </form>
+        </div>
         
 
         <div class="list">
           <div
             v-for="todo in filter" :class="`todo-item ${todo.done && 'done'}`">
-            <label>
-              <input type="checkbox" v-model="todo.done" />
+            <label v-show="!editingTodo">
+              <input class="edit"type="checkbox" v-model="todo.done" />
             </label>
 
             <div class="todo-content">
@@ -40,6 +53,7 @@
 
 
             <div class="actions">
+              <button class="edit" @click="editTodo(todo)">Edit</button>
               <button class="delete" @click="deleteTodo(todo)">Hapus</button>
             </div>
           </div>
@@ -56,6 +70,8 @@ import { ref, onMounted, watch, computed } from "vue";
 const todos = ref([]);
 const text = ref("");
 const hideCompleted = ref(false);
+const showAddForm = ref(false);
+const editingTodo = ref(null);
 
 const filter = computed(() => {
   return hideCompleted.value ? todos.value.filter(todo => !todo.done) : todos.value;
@@ -73,10 +89,38 @@ function addTodo() {
   });
 
   text.value = "";
+  showAddForm.value = false;
 }
 
 function deleteTodo(todo) {
   todos.value = todos.value.filter((x) => x !== todo);
+}
+
+function editTodo(todo) {
+  if (todo.done) {
+    alert("Kegiatan yang sudah selesai tidak dapat diedit!");
+    return;
+  }
+
+  editingTodo.value = todo;
+  document.querySelectorAll('.edit').forEach(element => {
+    element.style.display = 'none';
+  });
+}
+
+function saveEdit() {
+  editingTodo.value = null;
+  document.querySelectorAll('.edit').forEach(element => {
+    element.style.display = 'block';
+  });
+}
+
+function cancelEdit() {
+  editingTodo.value = null;
+
+  document.querySelectorAll('.edit').forEach(element => {
+    element.style.display = 'block';
+  });
 }
 
 watch(
