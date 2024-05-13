@@ -10,14 +10,10 @@
 }
 
 * {
-
-  align-items: center;
-  max-width: 500px;
   margin: 0 auto;
-  padding: 0;
   box-sizing: border-box;
   font-family: "montserrat", sans-serif;
-
+  margin-top: 0;
 }
 
 input:not([type="radio"]):not([type="checkbox"]),
@@ -33,6 +29,7 @@ body {
   background: var(--light);
   color: white;
   align-items: center;
+  max-width: 500px;
 }
 
 section {
@@ -49,8 +46,23 @@ h3 {
   color: white;
   font-size: 1rem;
   font-weight: 400;
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
 }
+
+
+.title {
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-top: 5.5rem;
+}
+
+he .title{
+  margin-top: 1.5rem;
+}
+
 .centered-text {
   display: flex;
   justify-content: center;
@@ -306,3 +318,4 @@ input:checked ~ .bubble::after {
 .edit-todo button:hover {
   background-color: #45a049;
 }
+
