@@ -77,14 +77,12 @@ watch(selectedUser, () => {
 </script>
 
 <style scoped>
-/* Global styles */
+
 @media (prefers-color-scheme: dark) {
   .todo-app h2 ul li {
     color: #000000; 
   }
 }
-
-/* Section styles */
 section {
   min-height: 100vh;
   padding: 10rem 9% 2rem; 
