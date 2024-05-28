@@ -9,29 +9,23 @@
     <section class="greeting">
       <h3 class="title">✍️Aplikasi ToDo List </h3>
     </section>
-
     <div class="input-section">
       <section class="create-todo">
         <form @submit.prevent="addTodo">
-          <h3 class="do-it">Apa yang ingin kamu lakukan🙂?</h3>
+          <h3 class="do-it">{{ title }}</h3>
           <input
             type="text"
             placeholder="Tambahkan kegiatan"
             v-model="text"
           />
-
           <input type="submit" value="Add" />
         </form>
       </section>
     </div>
-
     <h2 class="centered-text" v-show="todos.length === 0">Tidak ada kegiatan😞</h2>
-
     <div class="todo-section">
       <section class="todo-list">
         <button class="hide" @click="hideCompleted = !hideCompleted">{{ hideCompleted ? 'Show all' : 'Hide completed' }}</button>  
-
-          
         <div class="edit-todo" v-if="editingTodo">
           <form @submit.prevent="saveEdit">
             <input
@@ -42,8 +36,6 @@
             <button class="cancel-button" @click="cancelEdit">Batal</button>
           </form>
         </div>
-        
-
         <div class="list">
           <div
             v-for="todo in filter" :class="`todo-item ${todo.done && 'done'}`">
@@ -56,8 +48,6 @@
                 <li>{{ todo.todo }}</li>
               </ul>
             </div>
-
-
             <div class="actions">
               <button class="edit" @click="editTodo(todo)">Edit</button>
               <button class="delete" @click="deleteTodo(todo)">Hapus</button>
@@ -71,7 +61,7 @@
 
 
 <script setup>
-import { ref, onMounted, watch, computed } from "vue";
+import { ref, onMounted, watch, computed, defineProps } from "vue";
 
 const todos = ref([]);
 const text = ref("");
@@ -80,6 +70,17 @@ const editingTodo = ref(null);
 
 const filter = computed(() => {
   return hideCompleted.value ? todos.value.filter(todo => !todo.done) : todos.value;
+});
+
+const props = defineProps({
+  title: {
+    type: String,
+    default: 'Apa yang ingin kamu lakukan?'
+  },
+  subtitle: {
+    type: String,
+    default: ''
+  }
 });
 
 

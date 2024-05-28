@@ -4,6 +4,7 @@
       <nav class="navbar">
         <router-link to="/" >TodoList</router-link>
         <router-link to="/PostView" class="active">Posts</router-link>
+        <h1>{{ ps }}</h1>
       </nav>
     </header>
     <h3 class="post-1">✍️Post</h3>
@@ -36,6 +37,17 @@ const selectedUser = ref(null);
 const selectedUserName = ref('');
 const users = ref([]);
 const posts = ref([]);
+
+const props = defineProps({
+  posts: {
+    type: Array,
+    required: true
+  },
+  users: {
+    type: Array,
+    required: true
+  }
+});
 
 const fetchUser = async () => {
   try {
