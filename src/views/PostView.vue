@@ -1,12 +1,5 @@
 <template>
   <div class="container">
-    <header class="header">
-      <nav class="navbar">
-        <router-link to="/" >TodoList</router-link>
-        <router-link to="/PostView" class="active">Posts</router-link>
-        <h1>{{ ps }}</h1>
-      </nav>
-    </header>
     <h3 class="post-1">✍️Post</h3>
     <div class="posts" id="post">
       <h1>Postingan dari :</h1>
@@ -16,7 +9,11 @@
       </select>
 
       <div v-if="isLoading">
-        <div class="loading-message">Loading...</div>
+        <q-spinner
+        class="isLoading"
+        color="primary "
+        size="3em"
+       />
       </div>
 
       <ul v-if="!isLoading"> 
@@ -89,89 +86,56 @@ watch(selectedUser, () => {
 </script>
 
 <style scoped>
-
 @media (prefers-color-scheme: dark) {
   .todo-app h2 ul li {
-    color: #000000; 
+    color: #ffffff; 
   }
-}
-section {
-  min-height: 100vh;
-  padding: 10rem 9% 2rem; 
-}
-.navbar .active{
-  color: #00aaff;
-}
-
-.navbar a {
-  font-size: 1.4rem;
-  color: rgb(255, 255, 255);
-  margin: 0 2cap; 
-  font-weight: 700;
-  text-decoration: none; 
-}
-
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 2cap 0%;
-  z-index: 1000; 
-  background-color: rgb(17, 16, 101);
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   padding: 10px;
-  margin-top: -10px;
-  margin-bottom: -10px;
+}
+
+h2{
+  font-size: 50px;
 }
 
 .posts {
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   background-color: transparent;
-  margin: 50px auto 20px;
-  padding: 40px 40px 70px;
+  padding: 20px 20px 50px;
   border-radius: 5px;
   border: 1px solid rgb(47, 47, 47);
-}
-
-.posts h1{
-  color: rgb(255, 255, 255);
-  margin-bottom: 20px;
-}
-
-.posts h2{
-  color: rgb(255, 255, 255);
-  margin-bottom: 20px;
-}
-
-
-.loading-message {
-  display: flex;
-  justify-content:center;
   text-align: center;
-  margin-bottom: 10px;
-  max-width: 100px;
-  background-color: rgb(17, 16, 101);
-  border-radius: 10px;
-  padding: 2px;
+}
+
+.posts h1 {
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+}
+
+.posts h2 {
+  color: rgb(255, 255, 255);
+}
+
+.q-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selectModel {
   margin-bottom: 20px;
   width: 100%;
   padding: 10px;
-  font-size: 20px;
-  text-align:left;
-  border: 1px solid #545454;
+  font-size: 1rem;
+  text-align: left;
+  border: 1px solid #00318B;
   border-radius: 5px;
   background-color: #fff;
   cursor: pointer;
@@ -179,39 +143,41 @@ section {
 
 .selectModel:focus {
   outline: none;
-  border-color: #00aaff; 
+  border-color: #00318B; 
 }
 
 .posts ul {
   list-style-type: none; 
   padding-left: 0; 
-  background-color: rgb(17, 16, 101);
+  background-color: #00318B;
   padding: 10px;
   border-radius: 10px;
+  font-family: 'Poppins';
 }
 
 .posts li {
-  color: rgb(0, 0, 0);
-  margin-bottom: 10px; 
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  font-family: 'Poppins'; 
 }
 
 .posts h3, .posts p {
-  text-align: left; 
+  text-align: left;
+  font-family: 'Poppins'; 
 }
 
 .posts p {
-  padding: 0 0 0 25px;
   color: rgb(255, 255, 255);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins';
   font-style: italic;
+  margin-left: 30px;
 }
 
 .post-1 {
-  align-items: center;
   text-align: center;
-  color: white;
-  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
   font-weight: 700;
-  margin-top: 5.5rem;
+  margin-top: 2rem;
 }
 </style>
