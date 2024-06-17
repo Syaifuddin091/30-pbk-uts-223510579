@@ -16,7 +16,6 @@
   </template>
   
   <script setup>
-  // Tidak ada script tambahan yang dibutuhkan
   </script>
   
   <style scoped>
